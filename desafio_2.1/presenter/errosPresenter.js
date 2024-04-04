@@ -1,32 +1,32 @@
-const _ = require('lodash');
+const _ = require('lodash')
 
 class ErrosPresenter {
-  constructor(erros) {
-    this.erros = erros;
+  constructor (erros) {
+    this.erros = erros
   }
 
-  getErros() {
+  getErros () {
     return {
       erros: this.erros.map((erro) => ({
         dados: erro.dados,
         erros: erro.erros.map((e) => ({
           campo: e.campo,
-          mensagem: e.mensagem,
-        })),
-      })),
-    };
+          mensagem: e.mensagem
+        }))
+      }))
+    }
   }
 
-  getErrosFormatados() {
-    const errosFormatados = [];
+  getErrosFormatados () {
+    const errosFormatados = []
     for (const erro of this.erros) {
       errosFormatados.push({
         ...erro.dados,
-        erros: _.map(erro.erros, 'mensagem').join(', '),
-      });
+        erros: _.map(erro.erros, 'mensagem').join(', ')
+      })
     }
-    return errosFormatados;
+    return errosFormatados
   }
 }
 
-module.exports = ErrosPresenter;
+module.exports = ErrosPresenter
